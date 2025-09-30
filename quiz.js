@@ -1,23 +1,26 @@
 // Function to check the quiz answer
 function checkAnswer() {
-    // Correct answer
-    var correctAnswer = "4";
+    // Define the correct answer
+    const correctAnswer = "4";
 
-    // Get user answer
-    var selectedOption = document.querySelector('input[name="quiz"]:checked');
-    var userAnswer = selectedOption ? selectedOption.value : null;
+    // Get the user's selected answer
+    const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    let userAnswer = "";
+    if (selectedOption) {
+        userAnswer = selectedOption.value;
+    }
 
-    var feedback = document.getElementById("feedback");
+    // Get the feedback element
+    const feedback = document.getElementById("feedback");
 
-    // Compare and give feedback
+    // Compare answers and provide feedback
     if (userAnswer === correctAnswer) {
         feedback.textContent = "Correct! Well done.";
-        feedback.style.color = "#28a745";
     } else {
         feedback.textContent = "That's incorrect. Try again!";
-        feedback.style.color = "#dc3545";
     }
 }
 
-// Add event listener to button
-document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+// Add event listener to the submit button
+const submitButton = document.getElementById("submit-answer");
+submitButton.addEventListener("click", checkAnswer);
